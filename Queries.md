@@ -21,6 +21,7 @@ FROM applications;
 ### **RESULT**
 
 | Total Onboarded Applications | Total Portfolio Capital Demanded | Average Ticket Size |
+|-----------------------------|----------------------------------|---------------------|
 | 200 | $3,355,730.00 | $16,778.65 |
 
 ```
