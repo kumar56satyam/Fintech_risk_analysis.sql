@@ -16,7 +16,7 @@ SELECT
     ROUND(AVG(applied_amount), 2) AS average_ticket_size
 FROM applications;
 
-
+```
 
 ### Result
 
@@ -26,7 +26,7 @@ FROM applications;
 | Total Portfolio Capital Demanded | $3,355,730.00 |
 | Average Ticket Size | $16,778.65 |
 
-```
+
 
 
 ### Q2 Master Portfolio Default Rate (Asset Quality Mix)
