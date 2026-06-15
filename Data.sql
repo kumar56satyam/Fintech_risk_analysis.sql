@@ -1,14 +1,16 @@
---Insert into Applications
 
-INSERT INTO application VALUES
 
+-- Insert data into Applications Table
+
+
+INSERT INTO applications (application_id, customer_name, applied_amount, application_date, credit_score, employment_type) VALUES
 (101,'VASAVA VIKRAM BHAI DEVJIBHAI', 7081.00, '2020-05-20', 745, 'salaried'),
 (102,'pradeep taneja', 10421.62, '2020-06-23', 765, 'self employed'),
 (103,'Saqib Ulla', 2185.00, '2021-12-23', 750, 'salaried'),
 (104,'Digambar Shinde', 2740.00, '2022-10-22', 734,'self employed'),
 (105, 'Mange Ram', 9058.00, '2023-04-12', 746, 'salaried'),
 (106, 'tarungowda Gowda', 24659.35, '2021-11-21', 786, 'salaried'),
-(107, 'Sachin Agarwal', 30067.72, '2022-12-12',723, 'salaried'),
+(107, 'Sachin Agarwal', 30067.72, '2022-12-12', 723, 'salaried'),
 (108, 'Sarafdeen AK', 10287.26, '2017-11-11', 716,'salaried'),
 (109, 'Suleman Sisodia', 6038.37, '2020-12-11', 719,'self employed'),
 (110, 'irshad Kp', 9701.00, '2022-07-12', 757, 'self employed'),
@@ -28,19 +30,19 @@ INSERT INTO application VALUES
 (124, 'Gajendra Singh', 41613.28, '2022-06-18', 786, 'salaried' ),
 (125, 'Saddam Idrishi', 2507.95, '2022-10-16', 769, 'self employed'),
 (126, 'Salman Shah', 4898.94, '2019-04-12', 747,'self employed' ),
-(127, 'Surya S', 3475.1, '2020-06-23', 732, 'salaried' ),
+(127, 'Surya S', 3475.10, '2020-06-23', 732, 'salaried' ),
 (128, 'Ashvin Solanki', 31670.24, '2024-09-27', 745, 'salaried'),
-(129, 'Dhanashri Khairanar', 13469.8, '2019-11-12', 761, 'salaried' ),
-(130,'Shamshoddin Nimbalkar', 8240.00,  '2019-04-16', 722, 'salaried'),
-(131, 'Mantesh L lamani', 7762.00,  '2022-03-29', 734, 'self employed'),
-(132,'Vikas Sen', 9767.65, '2023-06-26', 740, 'self employed' ),
+(129, 'Dhanashri Khairanar', 13469.80, '2019-11-12', 761, 'salaried' ),
+(130, 'Shamshoddin Nimbalkar', 8240.00, '2019-04-16', 722, 'salaried'),
+(131, 'Mantesh L lamani', 7762.00, '2022-03-29', 734, 'self employed'),
+(132, 'Vikas Sen', 9767.65, '2023-06-26', 740, 'self employed' ),
 (133, 'Afzal khan Khan', 17999.00, '2022-09-19', 782,'salaried' ),
 (134, 'Haritha K', 7863.42, '2021-12-11', 734, 'salaried'),
 (135, 'Furkaan Khan', 4496.83, '2020-11-06', 723, 'salaried'),
 (136, 'Sharvan Paswan', 8919.54, '2022-06-23', 730,'salaried'),
-(137, 'Dhirend singh', 8513.49, '2021-07-16', 732 , 'salaried'),
+(137, 'Dhirend singh', 8513.49, '2021-07-16', 732, 'salaried'),
 (138, 'Krishan Sharma', 9878.64, '2021-06-23', 780, 'self employed'),
-(139,'Arjun VELAYUTHAM', 6969.00, '2020-09-12', 743, 'self employed'),
+(139, 'Arjun VELAYUTHAM', 6969.00, '2020-09-12', 743, 'self employed'),
 (140, 'Ram Lingam', 19993.68, '2018-11-17', 734, 'salaried'),
 (141, 'Ramesh Mk', 24593.35, '2018-12-22', 756, 'salaried'),
 (142, 'Ronak Rathod', 12109.70, '2022-09-16' , 745, 'self employed'),
@@ -49,14 +51,14 @@ INSERT INTO application VALUES
 (145, 'Rajesh Verma', 11947.46, '2022-10-12', 782, 'self employed'),
 (146, 'MOHAMMAD ALAM', 6489.34, '2016-10-17', 766, 'salaried'),
 (147, 'Tarun Sharma', 5220.40, '2018-09-26', 782, 'self employed'),
-(148, 'Harshit Hooda', 13633,'2018-11-22', 762, 'self employed'),
-(149, 'Rupali Gaikar', 3654.47, '2017-10-21',740,'salaried'),
-(150, 'Praveen Kumar', 10536.02, '2022-09-14',761,'salaried'),
+(148, 'Harshit Hooda', 13633.00, '2018-11-22', 762, 'self employed'),
+(149, 'Rupali Gaikar', 3654.47, '2017-10-21', 740, 'salaried'),
+(150, 'Praveen Kumar', 10536.02, '2022-09-14', 761, 'salaried'),
 (151, 'Ambikant Jadhav', 54996.48, '2023-08-16', 725, 'salaried'),
-(152, 'Sayyed Sajid',35427.58, '2021-02-13', 792, 'salaried' ),
+(152, 'Sayyed Sajid', 35427.58, '2021-02-13', 792, 'salaried' ),
 (153, 'Shivbahadur singh', 9258.43, '2022-12-26', 734, 'salaried'),
-(154, 'Suhada M P', 	16303.00, '2021-03-16', 756,'self employed'),
-(155, 'Vynkatesh Kamble', 8963.19, '2018-12-21', 782,'self employed'),
+(154, 'Suhada M P', 16303.00, '2021-03-16', 756, 'self employed'),
+(155, 'Vynkatesh Kamble', 8963.19, '2018-12-21', 782, 'self employed'),
 (156, 'Neelam Kunwar', 17737.26, '2021-04-15', 745, 'salaried'),
 (157, 'Seema Karak', 14118.84, '2018-12-29', 767, 'salaried'),
 (158, 'Adiba Navaz', 5773.00, '2021-03-11', 761, 'salaried'),
@@ -65,14 +67,14 @@ INSERT INTO application VALUES
 (161, 'Shoeb shaikh Zakir', 6659.00, '2019-08-23', 765, 'salaried'),
 (162, 'Babulal Paswan', 9180.00, '2019-03-22', 781, 'self employed'),
 (163, 'Firoj Shah', 2708.00, '2019-05-21', 761, 'self employed' ),
-(164, 'Manjeet Singh', 6476.00, '2017-06-22', 783 ,'self employed' ),
-(165, 'Alimuddin Ansari', 43683.00 , '2019-04-23', 781, 'self employed'),
+(164, 'Manjeet Singh', 6476.00, '2017-06-22', 783, 'self employed' ),
+(165, 'Alimuddin Ansari', 43683.00, '2019-04-23', 781, 'self employed'),
 (166, 'Mohammed Rafeeq', 19687.26, '2021-05-21', 761, 'salaried' ),
 (167, 'Rukhya banu Rukhya', 7030.61, '2021-01-27', 769, 'self employed' ),
 (168, 'Puja Dangodra', 3778.99, '2023-06-22', 745, 'salaried'),
 (169, 'Manjula Yeshamala', 5718.55, '2024-02-29', 748, 'salaried' ),
 (170, 'Amanjot Singh', 9290.12, '2024-01-25', 790, 'salaried'),
-(171, 'Rakesh Rajput', 24369.9, '2021-07-21', 765, 'salaried'),
+(171, 'Rakesh Rajput', 24369.90, '2021-07-21', 765, 'salaried'),
 (172, 'Padhiyar Krusna', 21409.26, '2023-02-22', 789, 'salaried'),
 (173, 'Arabaj Pancham', 13268.72, '2023-05-12', 756, 'self employed' ),
 (174, 'Lakhbir singh', 11754.52, '2021-07-12', 745, 'salaried'),
@@ -82,15 +84,15 @@ INSERT INTO application VALUES
 (178, 'Mohan Padma', 13380.00, '2023-07-11', 782, 'self employed'),
 (179, 'Salim Salim', 23022.26, '2021-07-21', 769, 'self employed'),
 (180, 'SANTOSH SHETTY', 89687.00, '2023-05-19', 745, 'self employed'),
-(181, 'Mahesh Chauhan', 15914.89, '2021-05-21' ,760, 'salaried'),
+(181, 'Mahesh Chauhan', 15914.89, '2021-05-21', 760, 'salaried'),
 (182, 'Niranjan N', 8287.93, '2023-07-12', 784, 'salaried'),
 (183, 'Mohd Affan', 16528.35, '2021-08-22', 761, 'self employed'),
-(184, 'Ravindrasinh Zala', 12728.4, '2022-09-29', 751, 'self employed'),
+(184, 'Ravindrasinh Zala', 12728.40, '2022-09-29', 751, 'self employed'),
 (185, 'Mohit Kumar', 14175.22, '2022-04-22', 769, 'self employed'),
 (186, 'Geeta Anpat', 29564.72, '2023-07-14', 743, 'self employed'),
 (187, 'Rohit Bhange', 21700.79, '2021-05-12', 752, 'self employed'),
-(188, 'Dushant Thakur', 26495.78, '2024-04-23', 789, 'self employed'),
-(189, 'MAHBOOB KHAN', 17159, '2021-07-14', 768, 'self employed' ),
+(188, 'Dushant Thakur', 26495.78, '2024-04-23', 789, 'self Lawyer'),
+(189, 'MAHBOOB KHAN', 17159.00, '2021-07-14', 768, 'self employed' ),
 (190, 'Baldev Singh', 5860.37, '2023-02-14', 759, 'self employed'),
 (191, 'Ansar Ansarkhan', 11463.00, '2023-05-16', 760, 'salaried' ),
 (192, 'Shiv Shankar', 4962.32, '2023-08-14', 769, 'self employed' ),
@@ -108,30 +110,30 @@ INSERT INTO application VALUES
 (204, 'Kalpesh Chaudhari', 12683.27, '2022-05-25', 782, 'salaried' ),
 (205, 'Anshoo pal', 12602.00, '2024-07-22', 767, 'salaried'),
 (206, 'Devlall Devlal', 21417.49, '2022-06-29', 772, 'salaried'),
-(207, 'Dipak Shrimali', 7394.76, '2021-07-30',765, 'self employed'),
+(207, 'Dipak Shrimali', 7394.76, '2021-07-30', 765, 'self employed'),
 (208, 'Poornima KARANKAL', 25958.24, '2021-05-31', 756, 'self employed' ),
 (209, 'Vaibhav Jadhav', 45262.32, '2022-05-26', 782, 'salaried'),
 (210, 'Ansari Sakeel', 5110.00, '2024-06-27', 755, 'salaried' ),
-(211, 'Yatiraj Abachane', 7395.96, '2024-05-28', 756 ,'salaried' ),
-(212, 'Bariya Amit Kumar', 10522.31, '2024-04-26', 744 ,'self employed' ),
-(213, 'Fakrul islam Barbhuiya', 15141.06, '2024-04-21',756, 'self employed'),
-(214, 'Sandeep Singh', 42378.00, '2024-03-24' , 766,  'self employed'),
+(211, 'Yatiraj Abachane', 7395.96, '2024-05-28', 756, 'salaried' ),
+(212, 'Bariya Amit Kumar', 10522.31, '2024-04-26', 744, 'self employed' ),
+(213, 'Fakrul islam Barbhuiya', 15141.06, '2024-04-21', 756, 'self employed'),
+(214, 'Sandeep Singh', 42378.00, '2024-03-24', 766, 'self employed'),
 (215, 'Vipin Sharma', 13895.54, '2022-04-25', 787, 'self employed'),
 (216, 'Dinesh H R', 3883.54, '2022-04-27', 768, 'salaried' ),
-(217, 'Kamlesh Sahu', 3386.95, '2022-06-28' , 756, 'salaried'),
+(217, 'Kamlesh Sahu', 3386.95, '2022-06-28', 756, 'salaried'),
 (218, 'Noorjha Khan', 8832.41, '2022-03-29', 788, 'salaried' ),
 (219, 'Sudhakar M', 20643.55, '2021-02-26', 779, 'salaried' ),
 (220, 'Shabeel Sulaiman', 15953.47, '2020-03-27', 767, 'self employed'),
-(221, 'Sagar Raut', 7982.78, '2020-04-21', 766, 'self employed'  ),
+(221, 'Sagar Raut', 7982.78, '2020-04-21', 766, 'self employed' ),
 (222, 'Madhu bala Purohit', 21602.43, '2018-05-21', 786, 'self employed' ),
 (223, 'Dilip Kumar L', 26036.73, '2018-06-29', 789, 'self employed' ),
-(224, 'Prakash Rana', 56749.88,  '2017-05-22', 767, 'self employed' ),
+(224, 'Prakash Rana', 56749.88, '2017-05-22', 767, 'self employed' ),
 (225, 'Maulik Bundheliya', 11361.89, '2019-06-22', 789, 'self employed'),
 (226, 'Jayprakash Singh', 31326.41, '2018-06-12', 791, 'salaried'),
 (227, 'Devidayal Shukla', 32872.56, '2019-07-29', 766, 'salaried'),
-(228, 'Ram Manohar', 10645.86, '2019-04-22', 756, 'salaried'  ),
+(228, 'Ram Manohar', 10645.86, '2019-04-22', 756, 'salaried' ),
 (229, 'Yogesh Kumar', 41117.67, '2020-06-21', 789, 'salaried'),
-(230, 'Ummeed Alam', 6970.09, '2021-09-28' ,745, 'self employed'),
+(230, 'Ummeed Alam', 6970.09, '2021-09-28', 745, 'self employed'),
 (231, 'Vijay Kumar', 25864.15, '2019-06-27', 769, 'self employed'),
 (232, 'Sarita Suresh Sarita', 6508.00, '2017-02-22', 749, 'salaried'),
 (233, 'Mehul Sapra', 21254.12, '2019-04-25', 756, 'salaried' ),
@@ -139,18 +141,18 @@ INSERT INTO application VALUES
 (235, 'Yogesh Gahlot', 10143.10, '2018-07-21', 744, 'self employed' ),
 (236, 'Deepak kumar prajapati', 25256.45, '2019-06-29', 765, 'self employed'),
 (237, 'Suraj Kumar', 9332.74, '2019-01-23', 744, 'self employed'),
-(238, 'Mitalben kintanbhai', 4502.00, '2019-08-22', 766,  'salaried' ),
-(239, 'Ajay Kumar Yadav', 15950.67, '2020-04-30',  788, 'salaried'),
-(240, 'Yogesh N', 6874.00 , '2020-04-30', 798, 'salaried'),
-(241, 'Yusufsha Divan', 9332.74, '2019-09-25', 767,  'salaried' ),
-(242, 'Rohit Adidravid', 15268.72, '2021-07-22',  781, 'self employed' ),
+(238, 'Mitalben kintanbhai', 4502.00, '2019-08-22', 766, 'salaried' ),
+(239, 'Ajay Kumar Yadav', 15950.67, '2020-04-30', 788, 'salaried'),
+(240, 'Yogesh N', 6874.00, '2020-04-30', 798, 'salaried'),
+(241, 'Yusufsha Divan', 9332.74, '2019-09-25', 767, 'salaried' ),
+(242, 'Rohit Adidravid', 15268.72, '2021-07-22', 781, 'self employed' ),
 (243, 'Aniket Kumar', 15647.29, '2021-04-24', 769, 'self employed' ),
-(244, 'Akash Kumar', 17294.00, '2022-07-25' , 781, 'self employed' ),
-(245, 'Yashasvi Yashasvi', 16664.79, '2021-03-28',  742,  'self employed'),
+(244, 'Akash Kumar', 17294.00, '2022-07-25', 781, 'self employed' ),
+(245, 'Yashasvi Yashasvi', 16664.79, '2021-03-28', 742, 'self employed'),
 (246, 'Surjeet Kumar', 7915.67, '2019-09-22', 749, 'salaried' ),
-(247, 'GAGAN DEEP SINGH', 10566.98 , '2020-02-29' , 765, 'salaried'),
-(248, 'ganesh kotian', 5275.93, '2020-04-15', 756,  'salaried' ),
-(249, 'Sarif Khalifa', 9948.2, '2022-04-18', 781, 'self employed'),
+(247, 'GAGAN DEEP SINGH', 10566.98, '2020-02-29', 765, 'salaried'),
+(248, 'ganesh kotian', 5275.93, '2020-04-15', 756, 'salaried' ),
+(249, 'Sarif Khalifa', 9948.20, '2022-04-18', 781, 'self employed'),
 (250, 'kathak Karthik R', 3059.30, '2021-09-12', 765, 'self employed'),
 (251, 'Md Abujaid', 5978.15, '2022-10-25', 745, 'self employed'),
 (252, 'Roja', 15293.30, '2024-11-25', 782, 'self employed'),
@@ -161,7 +163,7 @@ INSERT INTO application VALUES
 (257, 'Mithilesh Yadav', 25666.07, '2023-01-29', 750, 'self employed' ),
 (258, 'BHARATH B K', 15726.14, '2023-02-21', 769, 'salaried' ),
 (259, 'A G S Sharma', 12152.16, '2023-05-29', 732, 'salaried'),
-(260, 'surendra jaiswal', 4476.4, '2017-09-22', 766, 'self employed'),
+(260, 'surendra jaiswal', 4476.40, '2017-09-22', 766, 'self employed'),
 (261, 'Parmar Ajay', 6064.12, '2017-10-27', 754, 'self employed' ),
 (262, 'Mohammed Irfan', 13053.05, '2019-12-22', 781, 'self employed'),
 (263, 'Gourav Bhaman', 3577.83, '2018-12-24', 765, 'self employed' ),
@@ -170,14 +172,14 @@ INSERT INTO application VALUES
 (266, 'Abduljaleel. K Abduljaleel', 11366.00, '2026-02-20', 789, 'self employed'),
 (267, 'Mohammed Aslam', 18252.12, '2021-03-29', 748, 'self employed' ),
 (268, 'Yogesh Rananaware', 81050.41, '2019-09-29', 756, 'salaried' ),
-(269, 'Parasurama Ram', 10589.00, '2019-07-22', 782,  'salaried' ),
+(269, 'Parasurama Ram', 10589.00, '2019-07-22', 782, 'salaried' ),
 (270, 'Pardeep Kumar', 42886.53, '2023-07-29', 765, 'salaried' ),
 (271, 'Rahul R', 10637.57, '2021-07-17', 721, 'salaried'),
 (272, 'Akash Kumar', 30652.02, '2022-09-16', 748, 'self employed' ),
-(273, 'Jaypalsinh Chauhan', 16875.5, '2019-09-26', 767, 'self employed' ),
-(274, 'Abhishek Verma', 7549.09, '2019-08-21', 762,  'self employed'),
+(273, 'Jaypalsinh Chauhan', 16875.50, '2019-09-26', 767, 'self employed' ),
+(274, 'Abhishek Verma', 7549.09, '2019-08-21', 762, 'self employed'),
 (275, 'YOGESH KUNDU', 30936.87, '2018-07-22', 759, 'self employed'),
-(276, 'Vikram Singh', 28672.3, '2019-06-24', 768, 'salaried' ),
+(276, 'Vikram Singh', 28672.30, '2019-06-24', 768, 'salaried' ),
 (277, 'Sunder Sunder', 2432.00, '2020-06-27', 757, 'salaried' ),
 (278, 'Shabana Abdul Khan', 32242.92, '2021-07-23', 787, 'salaried'),
 (279, 'Meenakshi Devi', 8315.36, '2024-02-29', 709, 'self employed' ),
@@ -198,15 +200,21 @@ INSERT INTO application VALUES
 (294, 'Twinkle Darji', 5031.82, '2024-09-29', 739, 'self employed' ),
 (295, 'Amit Kumar Modi', 1223.71, '2025-10-10', 747, 'salaried' ),
 (296, 'Ayirondathil Reminjas', 11617.89, '2025-11-21', 767, 'salaried' ),
-(297, 'Abhay Vikram Singh', 10885.50, '2021-04-27', 759,'salaried'),
-(298, 'S Mohan', 15880.53, '2019-01-25', 749,'salaried' ),
-(299, 'RAJA K N', 11383.61, '2018-02-28', 769,'salaried' ),
-(300, 'Zuber Khan', 6828.94, '2020-02-27', 783,'salaried');
+(297, 'Abhay Vikram Singh', 10885.50, '2021-04-27', 759, 'salaried'),
+(298, 'S Mohan', 15880.53, '2019-01-25', 749, 'salaried' ),
+(299, 'RAJA K N', 11383.61, '2018-02-28', 769, 'salaried' ),
+(300, 'Zuber Khan', 6828.94, '2020-02-27', 783, 'salaried');
 
--- Insert into Verification Log
 
-INSERT INTO verification_log VALUES
 
+
+
+-- Insert into Verification Log Table
+
+
+
+
+INSERT INTO verification_log (verification_id, application_id, assigned_agent, verification_status, turnaround_time_hours, risk_flag_reason) VALUES
 (401, 101, 'Ali Husen Ansari', 'pending', 26, 'needs clarification'),
 (402, 102, 'prasoon e', 'pending', 54, 'needs clarification'),
 (403, 103, 'N Goutham', 'pending', 29, 'needs clarification'),
@@ -410,10 +418,16 @@ INSERT INTO verification_log VALUES
 
 
 
--- Insert into Loan Performance
 
-Insert into loan_performance Values
 
+
+-- Insert into Loan Performance Table
+
+
+
+
+
+INSERT INTO loan_performance (loan_id, application_id, loan_status, amount_paid, missed_payments) VALUES
 (701, 101, 'paid off', 7081.00, 0),
 (702, 102, 'paid off', 10421.62, 0),
 (703, 103, 'paid off', 2185.00, 0),
@@ -614,3 +628,7 @@ Insert into loan_performance Values
 (898, 298, 'defaulted', 15880.53, 9),
 (899, 299, 'defaulted', 11383.61, 8),
 (900, 300, 'current', 3887.41, 0);
+
+
+
+
