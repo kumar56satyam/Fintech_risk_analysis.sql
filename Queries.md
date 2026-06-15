@@ -16,10 +16,9 @@ SELECT
     ROUND(AVG(applied_amount), 2) AS average_ticket_size
 FROM applications;
 
-## RESULT
 
-### Portfolio Insights Summary
+
+### RESULT
 
 | Total Onboarded Applications | Total Portfolio Capital Demanded | Average Ticket Size |
-| :---: | :---: | :---: |
 | 200 | $3,355,730.00 | $16,778.65 |
