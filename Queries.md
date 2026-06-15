@@ -18,11 +18,13 @@ FROM applications;
 
 
 
-### **RESULT**
+### Result
 
-| Total Onboarded Applications | Total Portfolio Capital Demanded | Average Ticket Size |
-|-----------------------------|----------------------------------|---------------------|
-| 200 | $3,355,730.00 | $16,778.65 |
+| Metric | Value |
+|---------|---------|
+| Total Onboarded Applications | 200 |
+| Total Portfolio Capital Demanded | $3,355,730.00 |
+| Average Ticket Size | $16,778.65 |
 
 ```
 
