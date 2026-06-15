@@ -91,7 +91,7 @@ INSERT INTO applications (application_id, customer_name, applied_amount, applica
 (185, 'Mohit Kumar', 14175.22, '2022-04-22', 769, 'self employed'),
 (186, 'Geeta Anpat', 29564.72, '2023-07-14', 743, 'self employed'),
 (187, 'Rohit Bhange', 21700.79, '2021-05-12', 752, 'self employed'),
-(188, 'Dushant Thakur', 26495.78, '2024-04-23', 789, 'self Lawyer'),
+(188, 'Dushant Thakur', 26495.78, '2024-04-23', 789, 'self employed'),
 (189, 'MAHBOOB KHAN', 17159.00, '2021-07-14', 768, 'self employed' ),
 (190, 'Baldev Singh', 5860.37, '2023-02-14', 759, 'self employed'),
 (191, 'Ansar Ansarkhan', 11463.00, '2023-05-16', 760, 'salaried' ),
