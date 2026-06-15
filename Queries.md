@@ -18,7 +18,12 @@ FROM applications;
 
 
 
-### RESULT
+### **RESULT**
 
 | Total Onboarded Applications | Total Portfolio Capital Demanded | Average Ticket Size |
 | 200 | $3,355,730.00 | $16,778.65 |
+
+
+
+### Q2 Master Portfolio Default Rate (Asset Quality Mix)
+Business Purpose: Directly measures bottom-line portfolio impairment and historical credit risk.
