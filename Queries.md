@@ -28,6 +28,32 @@ FROM applications;
 
 
 
+### Q2: Master Portfolio Default Rate (Asset Quality Mix)
+* **Business Purpose:** Directly measures bottom-line portfolio impairment and historical credit risk.
+
+```sql
+SELECT 
+    loan_status,
+    COUNT(*) AS total_accounts,
+    ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM loan_performance), 2) AS portfolio_percentage
+FROM loan_performance
+GROUP BY loan_status
+ORDER BY total_accounts DESC;
+
+```
+
+### Result
+
+### Loan Status Breakdown
+
+| Loan Status | Total Accounts | Portfolio Percentage |
+| :--- | :---: | :---: |
+| Defaulted | 83 | 41.50% |
+| Paid Off | 59 | 29.50% |
+| Current | 58 | 29.00% |
+
+
+
 
 ### Q2 Master Portfolio Default Rate (Asset Quality Mix)
 Business Purpose: Directly measures bottom-line portfolio impairment and historical credit risk.
