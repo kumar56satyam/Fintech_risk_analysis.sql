@@ -111,7 +111,7 @@ FROM loan_performance p
 JOIN applications a ON p.application_id = a.application_id
 GROUP BY p.loan_status;
 
-```
+
 
 ### Result
 
