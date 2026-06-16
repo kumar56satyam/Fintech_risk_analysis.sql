@@ -130,12 +130,7 @@ GROUP BY p.loan_status;
 | Paid Off | $1,024,349.35 | $1,024,349.35 | 100.00% |
 | Defaulted | $1,346,257.06 | $107,650.00 | 8.00% |
 
-### Key Insights
 
-- **Paid Off loans** achieved full principal recovery with a recovery ratio of **100%**.
-- **Current loans** also show a recovery ratio of **100%**, indicating all outstanding principal has been recovered in the current dataset.
-- **Defaulted loans** recovered only **8%** of the disbursed principal, highlighting a significant source of credit loss.
-- The portfolio's recovery performance is highly dependent on reducing default rates and improving collections on delinquent accounts.
 
 
 ## 📊 Q6: Average Underwriting Credit Score Across Customer Base
@@ -161,16 +156,7 @@ FROM applications;
 |-------------------:|---------------------:|--------------------------------:|
 | 709 | 798 | 754.2 |
 
-### Key Insights
 
-- The lowest credit score observed in the portfolio is **709**, indicating that the applicant base largely consists of prime borrowers.
-- The highest recorded credit score is **798**, reflecting the presence of highly creditworthy customers.
-- The average credit score across all applications is **754.2**, suggesting a generally strong credit profile within the portfolio.
-- The relatively narrow score range indicates a controlled risk environment with limited exposure to subprime lending.
-
-### Business Interpretation
-
-A portfolio average credit score above **750** is typically associated with lower default risk and stronger repayment behavior. This indicates that the underwriting process is attracting and approving applicants with solid credit histories, contributing to overall portfolio stability.
 
 
 ## ⚡ Q7: Global System Processing Efficiency (Operational TAT Baseline)
@@ -196,23 +182,7 @@ FROM verification_log;
 |----------------------------:|-----------------------:|---------------------------:|
 | 35.48 | 10 | 60 |
 
-### Key Insights
 
-- The verification system processes applications in an average of **35.48 hours**.
-- The fastest verification turnaround time recorded is **10 hours**, demonstrating the system's best-case processing capability.
-- The slowest verification case required **60 hours**, indicating potential escalation scenarios or manual review requirements.
-- The gap between the fastest and slowest cases suggests variability in verification complexity and workload distribution.
-
-### Business Interpretation
-
-An average turnaround time of approximately **1.5 days (35.48 hours)** indicates a moderately efficient verification process. While standard cases are processed quickly, escalated applications can significantly increase processing time. Monitoring these metrics helps management optimize staffing, improve SLA compliance, and reduce customer onboarding delays.
-
-### Operational Recommendation
-
-- Investigate cases exceeding **48 hours** to identify recurring bottlenecks.
-- Automate low-risk verification checks to reduce manual intervention.
-- Establish SLA alerts for applications approaching escalation thresholds.
-- Track turnaround time trends monthly to measure operational improvements.
 
 
 ## 🛠️ Section 2: Credit Risk Infrastructure & Cohort Drills
@@ -258,24 +228,7 @@ GROUP BY a.employment_type;
 | Self Employed | 86 | 49 | 56.98 |
 | Salaried | 114 | 34 | 29.82 |
 
-### Key Insights
 
-- The **Self Employed** segment exhibits a significantly higher default rate of **56.98%**.
-- The **Salaried** segment shows a substantially lower default rate of **29.82%**.
-- Although Salaried borrowers represent a larger share of the portfolio, their repayment performance is considerably stronger.
-- Self Employed borrowers contribute disproportionately to portfolio credit losses and require enhanced risk monitoring.
-
-### Business Interpretation
-
-The analysis reveals a clear relationship between employment stability and credit performance. Self Employed borrowers demonstrate nearly **double the default propensity** compared to Salaried borrowers, suggesting greater income volatility and repayment uncertainty within this segment.
-
-### Risk Management Recommendations
-
-- Apply stricter underwriting criteria for Self Employed applicants.
-- Increase income verification requirements for non-salaried borrowers.
-- Consider risk-based pricing adjustments for higher-risk employment cohorts.
-- Develop separate scorecard models for Salaried and Self Employed applicants.
-- Monitor default trends by employment type on a monthly basis to identify emerging risks.
 
 
 ### Q9: Early Warning Signal (EWS) – Missed Payments Velocity Cliff
@@ -324,21 +277,4 @@ ORDER BY 1;
 | 1-2: Minor Delinquency | 80 | 0 | 0.00 |
 | 6+: Severe Write-Off Impairment | 11 | 11 | 100.00 |
 
-### Key Insights
 
-- Borrowers with **Perfect Standings (0 missed payments)** maintained a **0% default rate**, indicating strong repayment behavior.
-- Accounts with **1–2 missed payments** also recorded **no defaults**, suggesting that minor delinquency alone is not a strong predictor of immediate credit loss.
-- The **Severe Write-Off Impairment** cohort experienced a **100% conversion-to-default rate**, making it the highest-risk segment in the portfolio.
-- No accounts were observed within the **3–5 missed payment warning range**, creating a direct jump from minor delinquency to severe impairment in the current dataset.
-
-### Business Interpretation
-
-The analysis reveals a sharp risk cliff once borrowers exceed acceptable delinquency limits. While early-stage missed payments show limited default risk, borrowers entering the severe delinquency bucket become highly likely to default. This pattern highlights the importance of intervention before accounts reach advanced delinquency stages.
-
-### Risk Management Recommendations
-
-- Trigger proactive collection outreach immediately after the second missed payment.
-- Establish automated Early Warning System (EWS) alerts for accounts approaching severe delinquency.
-- Implement payment restructuring or hardship programs for borrowers exhibiting repeated payment failures.
-- Closely monitor transitions from minor delinquency to severe impairment to reduce future charge-offs.
-- Expand tracking of intermediate delinquency bands (3–5 missed payments) to improve predictive risk modeling.
