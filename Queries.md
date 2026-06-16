@@ -138,3 +138,207 @@ GROUP BY p.loan_status;
 - The portfolio's recovery performance is highly dependent on reducing default rates and improving collections on delinquent accounts.
 
 
+## 📊 Q6: Average Underwriting Credit Score Across Customer Base
+
+### Business Purpose
+Establishes the historical credit profile foundation of applicants entering the lending system. This metric helps assess the overall credit quality of the applicant pool and supports risk-based lending decisions.
+
+### SQL Query
+
+```sql
+SELECT
+    MIN(credit_score) AS credit_score_floor,
+    MAX(credit_score) AS credit_score_ceiling,
+    ROUND(AVG(credit_score), 1) AS standardized_portfolio_average
+FROM applications;
+```
+
+### Result
+
+#### Portfolio Credit Score Distribution
+
+| Credit Score Floor | Credit Score Ceiling | Standardized Portfolio Average |
+|-------------------:|---------------------:|--------------------------------:|
+| 709 | 798 | 754.2 |
+
+### Key Insights
+
+- The lowest credit score observed in the portfolio is **709**, indicating that the applicant base largely consists of prime borrowers.
+- The highest recorded credit score is **798**, reflecting the presence of highly creditworthy customers.
+- The average credit score across all applications is **754.2**, suggesting a generally strong credit profile within the portfolio.
+- The relatively narrow score range indicates a controlled risk environment with limited exposure to subprime lending.
+
+### Business Interpretation
+
+A portfolio average credit score above **750** is typically associated with lower default risk and stronger repayment behavior. This indicates that the underwriting process is attracting and approving applicants with solid credit histories, contributing to overall portfolio stability.
+
+
+## ⚡ Q7: Global System Processing Efficiency (Operational TAT Baseline)
+
+### Business Purpose
+Establishes organizational Service Level Agreement (SLA) speed benchmarks by measuring the efficiency of the verification workflow. These metrics help identify operational bottlenecks and evaluate processing performance across the lending pipeline.
+
+### SQL Query
+
+```sql
+SELECT
+    ROUND(AVG(turnaround_time_hours), 2) AS system_wide_avg_tat_hours,
+    MIN(turnaround_time_hours) AS fastest_triage_hours,
+    MAX(turnaround_time_hours) AS slowest_escalation_hours
+FROM verification_log;
+```
+
+### Result
+
+#### Verification Processing Performance
+
+| System-Wide Avg TAT (Hours) | Fastest Triage (Hours) | Slowest Escalation (Hours) |
+|----------------------------:|-----------------------:|---------------------------:|
+| 35.48 | 10 | 60 |
+
+### Key Insights
+
+- The verification system processes applications in an average of **35.48 hours**.
+- The fastest verification turnaround time recorded is **10 hours**, demonstrating the system's best-case processing capability.
+- The slowest verification case required **60 hours**, indicating potential escalation scenarios or manual review requirements.
+- The gap between the fastest and slowest cases suggests variability in verification complexity and workload distribution.
+
+### Business Interpretation
+
+An average turnaround time of approximately **1.5 days (35.48 hours)** indicates a moderately efficient verification process. While standard cases are processed quickly, escalated applications can significantly increase processing time. Monitoring these metrics helps management optimize staffing, improve SLA compliance, and reduce customer onboarding delays.
+
+### Operational Recommendation
+
+- Investigate cases exceeding **48 hours** to identify recurring bottlenecks.
+- Automate low-risk verification checks to reduce manual intervention.
+- Establish SLA alerts for applications approaching escalation thresholds.
+- Track turnaround time trends monthly to measure operational improvements.
+
+
+## 🛠️ Section 2: Credit Risk Infrastructure & Cohort Drills
+
+### Q8: Occupational Risk Matrix (Employment Type vs. Default Propensity)
+
+### Business Purpose
+Identifies high-risk borrower segments based on employment classification. This analysis helps credit risk teams implement targeted underwriting controls, optimize approval policies, and reduce future portfolio losses.
+
+### SQL Query
+
+```sql
+SELECT
+    a.employment_type,
+    COUNT(*) AS total_booked_loans,
+    SUM(
+        CASE
+            WHEN p.loan_status = 'defaulted' THEN 1
+            ELSE 0
+        END
+    ) AS default_volume,
+    ROUND(
+        SUM(
+            CASE
+                WHEN p.loan_status = 'defaulted' THEN 1
+                ELSE 0
+            END
+        ) * 100.0 / COUNT(*),
+        2
+    ) AS segment_default_rate
+FROM applications a
+JOIN loan_performance p
+    ON a.application_id = p.application_id
+GROUP BY a.employment_type;
+```
+
+### Result
+
+#### Employment Segment Risk Analysis
+
+| Employment Type | Total Booked Loans | Default Volume | Segment Default Rate (%) |
+|----------------|-------------------:|---------------:|-------------------------:|
+| Self Employed | 86 | 49 | 56.98 |
+| Salaried | 114 | 34 | 29.82 |
+
+### Key Insights
+
+- The **Self Employed** segment exhibits a significantly higher default rate of **56.98%**.
+- The **Salaried** segment shows a substantially lower default rate of **29.82%**.
+- Although Salaried borrowers represent a larger share of the portfolio, their repayment performance is considerably stronger.
+- Self Employed borrowers contribute disproportionately to portfolio credit losses and require enhanced risk monitoring.
+
+### Business Interpretation
+
+The analysis reveals a clear relationship between employment stability and credit performance. Self Employed borrowers demonstrate nearly **double the default propensity** compared to Salaried borrowers, suggesting greater income volatility and repayment uncertainty within this segment.
+
+### Risk Management Recommendations
+
+- Apply stricter underwriting criteria for Self Employed applicants.
+- Increase income verification requirements for non-salaried borrowers.
+- Consider risk-based pricing adjustments for higher-risk employment cohorts.
+- Develop separate scorecard models for Salaried and Self Employed applicants.
+- Monitor default trends by employment type on a monthly basis to identify emerging risks.
+
+
+### Q9: Early Warning Signal (EWS) – Missed Payments Velocity Cliff
+
+### Business Purpose
+Identifies the critical delinquency threshold at which borrowers transition from manageable repayment delays into high-probability default events. This analysis supports Early Warning Systems (EWS), collection prioritization, and proactive portfolio risk management.
+
+### SQL Query
+
+```sql
+SELECT
+    CASE
+        WHEN missed_payments = 0 THEN '0: Perfect Standings'
+        WHEN missed_payments BETWEEN 1 AND 2 THEN '1-2: Minor Delinquency'
+        WHEN missed_payments BETWEEN 3 AND 5 THEN '3-5: Warning Cohort'
+        ELSE '6+: Severe Write-Off Impairment'
+    END AS delinquency_lifecycle_tier,
+    COUNT(*) AS total_accounts,
+    SUM(
+        CASE
+            WHEN loan_status = 'defaulted' THEN 1
+            ELSE 0
+        END
+    ) AS hard_defaults,
+    ROUND(
+        SUM(
+            CASE
+                WHEN loan_status = 'defaulted' THEN 1
+                ELSE 0
+            END
+        ) * 100.0 / COUNT(*),
+        2
+    ) AS conversion_to_default_pct
+FROM loan_performance
+GROUP BY 1
+ORDER BY 1;
+```
+
+### Result
+
+#### Delinquency Lifecycle Analysis
+
+| Delinquency Lifecycle Tier | Total Accounts | Hard Defaults | Conversion to Default (%) |
+|----------------------------|---------------:|--------------:|--------------------------:|
+| 0: Perfect Standings | 109 | 0 | 0.00 |
+| 1-2: Minor Delinquency | 80 | 0 | 0.00 |
+| 6+: Severe Write-Off Impairment | 11 | 11 | 100.00 |
+
+### Key Insights
+
+- Borrowers with **Perfect Standings (0 missed payments)** maintained a **0% default rate**, indicating strong repayment behavior.
+- Accounts with **1–2 missed payments** also recorded **no defaults**, suggesting that minor delinquency alone is not a strong predictor of immediate credit loss.
+- The **Severe Write-Off Impairment** cohort experienced a **100% conversion-to-default rate**, making it the highest-risk segment in the portfolio.
+- No accounts were observed within the **3–5 missed payment warning range**, creating a direct jump from minor delinquency to severe impairment in the current dataset.
+
+### Business Interpretation
+
+The analysis reveals a sharp risk cliff once borrowers exceed acceptable delinquency limits. While early-stage missed payments show limited default risk, borrowers entering the severe delinquency bucket become highly likely to default. This pattern highlights the importance of intervention before accounts reach advanced delinquency stages.
+
+### Risk Management Recommendations
+
+- Trigger proactive collection outreach immediately after the second missed payment.
+- Establish automated Early Warning System (EWS) alerts for accounts approaching severe delinquency.
+- Implement payment restructuring or hardship programs for borrowers exhibiting repeated payment failures.
+- Closely monitor transitions from minor delinquency to severe impairment to reduce future charge-offs.
+- Expand tracking of intermediate delinquency bands (3–5 missed payments) to improve predictive risk modeling.
