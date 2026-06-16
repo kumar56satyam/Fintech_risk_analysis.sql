@@ -55,5 +55,47 @@ ORDER BY total_accounts DESC;
 
 
 
-### Q2 Master Portfolio Default Rate (Asset Quality Mix)
-Business Purpose: Directly measures bottom-line portfolio impairment and historical credit risk.
+### Q3 Structural Verification Funnel Pass vs. Leakage Rate
+* **Business Purpose:** Evaluates the conversion drop-off driven by credit risk filtering rules.
+
+```sql
+SELECT 
+    verification_status,
+    COUNT(*) AS absolute_count,
+    ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM verification_log), 2) AS conversion_rate
+FROM verification_log
+GROUP BY verification_status;
+
+```
+
+### Result
+
+### Verification Status Breakdown
+
+| Verification Status | Absolute Count | Conversion Rate |
+| :--- | :---: | :---: |
+| Approved | 117 | 58.50% |
+| Flagged | 83 | 41.50% |
+
+### Q4 Capital Allocation Flow by Employment Demographics
+* **Business Purpose:** Informs targeted user-acquisition costs and customized limit assignments.
+
+```sql
+SELECT 
+    employment_type,
+    COUNT(*) AS application_count,
+    SUM(applied_amount) AS allocated_capital,
+    ROUND(AVG(applied_amount), 2) AS avg_demanded_amount
+FROM applications
+GROUP BY employment_type;
+```
+### Result
+
+### Employment Type Analysis
+
+| Employment Type | Application Count | Allocated Capital | Avg. Demanded Amount |
+| :--- | :---: | :---: | :---: |
+| Salaried | 114 | $1,941,230.00 | $17,028.33 |
+| Self Employed | 86 | $1,414,500.00 | $16,447.67 |
+
+
