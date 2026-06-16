@@ -98,29 +98,43 @@ GROUP BY employment_type;
 | Salaried | 114 | $1,941,230.00 | $17,028.33 |
 | Self Employed | 86 | $1,414,500.00 | $16,447.67 |
 
-### Q5 Gross Principal Capital Recovered vs. Outstanding Pipeline
-* **Business Purpose:** Disbursal cash flow tracking to evaluate baseline asset performance.
+## 📈 Q5: Gross Principal Capital Recovered vs. Outstanding Pipeline
 
-  ```sql
-  SELECT 
+### Business Purpose
+Disbursal cash flow tracking to evaluate baseline asset performance and measure how much of the loan principal has been recovered across different loan statuses.
+
+### SQL Query
+
+```sql
+SELECT 
     p.loan_status,
     SUM(a.applied_amount) AS total_disbursed_principal,
     SUM(p.amount_paid) AS total_collected_cash,
-    ROUND(SUM(p.amount_paid) * 100.0 / SUM(a.applied_amount), 2) AS recovery_ratio
+    ROUND(
+        SUM(p.amount_paid) * 100.0 / SUM(a.applied_amount),
+        2
+    ) AS recovery_ratio
 FROM loan_performance p
-JOIN applications a ON p.application_id = a.application_id
+JOIN applications a
+    ON p.application_id = a.application_id
 GROUP BY p.loan_status;
-
-
+```
 
 ### Result
 
-### Portfolio Performance by Loan Status
+#### Portfolio Performance by Loan Status
 
 | Loan Status | Total Disbursed Principal | Total Collected Cash | Recovery Ratio |
-| :--- | :---: | :---: | :---: |
+|------------|--------------------------:|---------------------:|---------------:|
 | Current | $985,123.59 | $985,123.59 | 100.00% |
 | Paid Off | $1,024,349.35 | $1,024,349.35 | 100.00% |
 | Defaulted | $1,346,257.06 | $107,650.00 | 8.00% |
+
+### Key Insights
+
+- **Paid Off loans** achieved full principal recovery with a recovery ratio of **100%**.
+- **Current loans** also show a recovery ratio of **100%**, indicating all outstanding principal has been recovered in the current dataset.
+- **Defaulted loans** recovered only **8%** of the disbursed principal, highlighting a significant source of credit loss.
+- The portfolio's recovery performance is highly dependent on reducing default rates and improving collections on delinquent accounts.
 
 
