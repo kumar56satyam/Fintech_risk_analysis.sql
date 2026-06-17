@@ -278,3 +278,50 @@ ORDER BY 1;
 | 6+: Severe Write-Off Impairment | 11 | 11 | 100.00 |
 
 
+### Q10: Underwriting Disconnect (Credit Score vs. Default Rates)
+
+### Business Purpose
+Evaluates whether borrower credit scores effectively predict default behavior within the portfolio. This analysis helps validate underwriting quality and determine whether bureau scores remain a reliable risk assessment tool.
+
+### SQL Query
+
+```sql
+SELECT
+    CASE
+        WHEN credit_score < 730 THEN '700-729: Low-Tier Bureau'
+        WHEN credit_score BETWEEN 730 AND 760 THEN '730-760: Mid-Tier Bureau'
+        ELSE '761+: Premium-Tier Bureau'
+    END AS score_bracket,
+    COUNT(*) AS total_allocated,
+    SUM(
+        CASE
+            WHEN p.loan_status = 'defaulted' THEN 1
+            ELSE 0
+        END
+    ) AS defaults,
+    ROUND(
+        SUM(
+            CASE
+                WHEN p.loan_status = 'defaulted' THEN 1
+                ELSE 0
+            END
+        ) * 100.0 / COUNT(*),
+        2
+    ) AS default_ratio
+FROM applications a
+JOIN loan_performance p
+    ON a.application_id = p.application_id
+GROUP BY 1
+ORDER BY 1;
+```
+
+### Result
+
+#### Credit Score Risk Segmentation Analysis
+
+| Score Bracket | Total Allocated | Defaults | Default Ratio (%) |
+|--------------|----------------:|----------:|------------------:|
+| 700-729: Low-Tier Bureau | 44 | 19 | 43.18 |
+| 730-760: Mid-Tier Bureau | 70 | 30 | 42.86 |
+| 761+: Premium-Tier Bureau | 86 | 34 | 39.53 |
+
