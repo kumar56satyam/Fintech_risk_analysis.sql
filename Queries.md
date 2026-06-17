@@ -712,4 +712,33 @@ The sharp increase in May originations would likely require additional underwrit
 
 Origination activity demonstrates meaningful month-to-month volatility, with application volume increasing from **14 applications in February** to **100 applications in May**. Despite these fluctuations, average loan sizes remained stable, indicating that operational scaling requirements are primarily driven by volume growth rather than changes in borrower exposure levels.
 
+### Q20: Efficiency Scorecard – Top 5 Highest Operational Backlog Agents
+
+### Business Purpose
+Identifies verification agents associated with the largest processing delays. This analysis helps operations management detect capacity constraints, workload imbalances, and potential SLA breach risks within the verification pipeline.
+
+### SQL Query
+
+```sql
+SELECT
+    assigned_agent,
+    COUNT(*) AS load_volume,
+    MAX(turnaround_time_hours) AS peak_processing_delay
+FROM verification_log
+GROUP BY assigned_agent
+ORDER BY peak_processing_delay DESC, load_volume DESC
+LIMIT 5;
+```
+
+### Result
+
+#### Top 5 Agents with Highest Processing Delays
+
+| Assigned Agent | Load Volume | Peak Processing Delay (Hours) |
+|---------------|------------:|------------------------------:|
+| RojaE RojaE | 1 | 60 |
+| Raju Doosa | 1 | 60 |
+| Priyanka luthra | 1 | 60 |
+| SOHEL MANSURI | 1 | 60 |
+| Monu Kumar | 1 | 59 |
 
