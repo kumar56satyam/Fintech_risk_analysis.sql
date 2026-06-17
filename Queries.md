@@ -541,3 +541,118 @@ GROUP BY v.risk_flag_reason;
 |------------------|--------------------:|--------------------------:|
 | Fake Employment | 8 | $156,400.00 |
 
+
+
+
+## ⚡ Section 3: Operational Efficiency & Agent Performance
+
+### Q16: Human Agent Operational Speed Leaderboard
+
+### Business Purpose
+Benchmarks verification agents based on processing turnaround time (TAT) to identify top-performing operational resources. This analysis supports workforce optimization, productivity monitoring, and SLA management initiatives.
+
+### SQL Query
+
+```sql
+SELECT
+    assigned_agent,
+    COUNT(*) AS total_cases_processed,
+    ROUND(AVG(turnaround_time_hours), 1) AS average_agent_tat_hours
+FROM verification_log
+GROUP BY assigned_agent
+ORDER BY average_agent_tat_hours ASC
+LIMIT 5;
+```
+
+### Result
+
+#### Top 5 Fastest Verification Agents
+
+| Assigned Agent | Total Cases Processed | Average Agent TAT (Hours) |
+|----------------|---------------------:|--------------------------:|
+| imran masuri | 1 | 10.0 |
+| Shuchi Kaura | 1 | 10.0 |
+| Prafull Rathod | 1 | 11.0 |
+| Tejashwini G | 1 | 11.0 |
+| HARSH SALVE | 1 | 11.0 |
+
+### Q17: Verification Cost Analysis – TAT Drag by Verification Outcomes
+
+### Business Purpose
+Measures operational effort across different verification outcomes by analyzing average turnaround time (TAT). This helps identify whether certain decision types create processing bottlenecks and increase operational costs.
+
+### SQL Query
+
+```sql
+SELECT
+    verification_status,
+    ROUND(AVG(turnaround_time_hours), 2) AS average_processing_hours
+FROM verification_log
+GROUP BY verification_status;
+```
+
+### Result
+
+#### Verification Processing Time by Outcome
+
+| Verification Status | Average Processing Hours |
+|---------------------|-------------------------:|
+| Approved | 35.81 |
+| Flagged | 35.01 |
+
+### Key Insights
+
+- **Approved applications** required an average of **35.81 hours** to complete verification.
+- **Flagged applications** averaged **35.01 hours**, slightly faster than approved cases.
+- The processing time difference between the two outcomes is minimal (**0.80 hours**).
+- Verification workload appears to be distributed consistently regardless of final review outcome.
+
+### Business Interpretation
+
+Contrary to common expectations, flagged applications do not require substantially longer review times than approved applications. This suggests that the verification process follows a relatively standardized workflow and that risk identification occurs efficiently within existing operational procedures.
+
+The near-identical turnaround times indicate that operational delays are likely driven by overall process complexity rather than the final verification decision itself.
+
+### Operational Recommendations
+
+- Monitor turnaround times by verification outcome on a recurring basis.
+- Investigate individual cases with exceptionally high TAT values to identify hidden bottlenecks.
+- Consider adding workflow-stage tracking to determine where processing delays occur.
+- Measure agent-level performance alongside outcome-based TAT metrics for deeper operational insights.
+- Establish SLA thresholds for verification completion and automate escalation alerts for overdue cases.
+
+### Executive Summary
+
+Verification processing times remain highly consistent across outcome categories, with **Approved applications averaging 35.81 hours** and **Flagged applications averaging 35.01 hours**. The small difference suggests that verification outcomes are not a major driver of operational friction, indicating a stable and standardized review process across the portfolio.
+
+
+
+### Q18: Operational Drag Matrix (Risk Trigger vs. TAT Hours)
+
+### Business Purpose
+Identifies which verification risk categories consume the most operational resources and create the greatest processing delays. This analysis helps operations leaders prioritize workflow improvements and reduce verification bottlenecks.
+
+### SQL Query
+
+```sql
+SELECT
+    risk_flag_reason,
+    COUNT(*) AS dynamic_load_volume,
+    ROUND(AVG(turnaround_time_hours), 2) AS execution_drag_hours
+FROM verification_log
+GROUP BY risk_flag_reason
+ORDER BY execution_drag_hours DESC;
+```
+
+### Result
+
+#### Verification Queue Performance Analysis
+
+| Risk Flag Reason | Dynamic Load Volume | Execution Drag (Hours) |
+|------------------|-------------------:|-----------------------:|
+| Verification Done | 117 | 35.81 |
+| Borderline Verification | 41 | 35.12 |
+| Needs Clarification | 28 | 34.64 |
+| Fake Employment | 8 | 34.38 |
+| Address Mismatch | 6 | 24.17 |
+
