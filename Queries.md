@@ -325,3 +325,75 @@ ORDER BY 1;
 | 730-760: Mid-Tier Bureau | 70 | 30 | 42.86 |
 | 761+: Premium-Tier Bureau | 86 | 34 | 39.53 |
 
+
+
+
+
+
+### Q11: High-Value Exposure Capital at Extreme Default Risk
+
+### Business Purpose
+Measures the total capital exposure associated with borrowers who have completely ceased repayment activity. This metric identifies the portion of the portfolio experiencing maximum credit impairment and potential full principal loss.
+
+### SQL Query
+
+```sql
+SELECT
+    COUNT(*) AS severe_loss_units,
+    SUM(a.applied_amount) AS principal_at_total_loss
+FROM applications a
+JOIN loan_performance p
+    ON a.application_id = p.application_id
+WHERE p.loan_status = 'defaulted'
+  AND p.amount_paid = 0;
+```
+
+### Result
+
+#### Severe Loss Exposure Analysis
+
+| Severe Loss Units | Principal at Total Loss |
+|------------------:|------------------------:|
+| 31 | $512,400.00 |
+
+
+
+
+
+### Q12: Distribution Audit of Underwriting Risk Flags
+
+### Business Purpose
+Identifies the most common verification and underwriting failure reasons across the portfolio. This analysis helps operations teams prioritize process improvements, strengthen fraud controls, and optimize verification workflows.
+
+### SQL Query
+
+```sql
+SELECT
+    risk_flag_reason,
+    COUNT(*) AS incident_frequency,
+    ROUND(
+        COUNT(*) * 100.0 /
+        (
+            SELECT COUNT(*)
+            FROM verification_log
+            WHERE verification_status = 'flagged'
+        ),
+        2
+    ) AS contribution_pct
+FROM verification_log
+WHERE verification_status = 'flagged'
+GROUP BY risk_flag_reason
+ORDER BY incident_frequency DESC;
+```
+
+### Result
+
+#### Underwriting Risk Flag Distribution
+
+| Risk Flag Reason | Incident Frequency | Contribution (%) |
+|------------------|-------------------:|-----------------:|
+| Borderline Verification | 41 | 49.40 |
+| Needs Clarification | 28 | 33.73 |
+| Fake Employment | 8 | 9.64 |
+| Address Mismatch | 6 | 7.23 |
+
