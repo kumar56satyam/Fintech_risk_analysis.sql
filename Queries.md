@@ -656,3 +656,60 @@ ORDER BY execution_drag_hours DESC;
 | Fake Employment | 8 | 34.38 |
 | Address Mismatch | 6 | 24.17 |
 
+
+
+
+### Q19: Underwriting Velocity Volatility Across Calendar Months
+
+### Business Purpose
+Evaluates application origination volume and average loan ticket size across different calendar months. This analysis helps operations teams anticipate workload fluctuations, optimize staffing levels, and maintain consistent service delivery during periods of changing demand.
+
+### SQL Query
+
+```sql
+SELECT
+    EXTRACT(MONTH FROM application_date) AS processing_month,
+    COUNT(*) AS monthly_originations_volume,
+    ROUND(AVG(applied_amount), 2) AS monthly_avg_ticket_size
+FROM applications
+GROUP BY 1
+ORDER BY 1;
+```
+
+### Result
+
+#### Monthly Origination Volume Analysis
+
+| Processing Month | Monthly Originations Volume | Monthly Avg Ticket Size ($) |
+|-----------------:|---------------------------:|----------------------------:|
+| 2 | 14 | 16,738.56 |
+| 3 | 36 | 15,159.25 |
+| 4 | 50 | 17,742.00 |
+| 5 | 100 | 16,942.36 |
+
+### Key Insights
+
+- **May (Month 5)** recorded the highest origination activity with **100 applications**, representing the portfolio's peak operational workload.
+- **February (Month 2)** generated the lowest application volume with **14 originations**.
+- Average loan sizes remained relatively stable across all months, ranging from approximately **$15K to $18K**.
+- While application volume fluctuated significantly, borrower demand characteristics remained consistent.
+
+### Business Interpretation
+
+The portfolio exhibits substantial variation in application volume across months, suggesting the presence of seasonal demand patterns or marketing-driven origination spikes. However, the stability of average ticket sizes indicates that borrower profiles and lending behavior remained relatively consistent throughout the observed period.
+
+The sharp increase in May originations would likely require additional underwriting and verification capacity to maintain service-level agreements and prevent operational bottlenecks.
+
+### Operational Recommendations
+
+- Increase staffing capacity during historically high-volume months.
+- Monitor monthly origination trends to improve workforce planning.
+- Establish surge-capacity procedures for periods of rapid application growth.
+- Track monthly approval and turnaround-time metrics alongside volume trends.
+- Analyze marketing campaigns and acquisition channels contributing to volume spikes.
+
+### Executive Summary
+
+Origination activity demonstrates meaningful month-to-month volatility, with application volume increasing from **14 applications in February** to **100 applications in May**. Despite these fluctuations, average loan sizes remained stable, indicating that operational scaling requirements are primarily driven by volume growth rather than changes in borrower exposure levels.
+
+
