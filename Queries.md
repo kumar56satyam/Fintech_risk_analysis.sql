@@ -771,3 +771,32 @@ WHERE turnaround_time_hours < 24;
 |----------------------:|--------------------------:|
 | 49 | 24.50 |
 
+
+
+### Q22: Operational Slack Tracking (Cases Exceeding 48-Hour SLA Threshold)
+
+### Business Purpose
+Measures the volume and rate of verification cases breaching the organization's Service Level Agreement (SLA). This metric helps operations teams quantify backlog risk, identify capacity constraints, and monitor customer experience degradation caused by delayed processing.
+
+### SQL Query
+
+```sql
+SELECT
+    COUNT(*) AS sla_breach_incidents,
+    ROUND(
+        COUNT(*) * 100.0 /
+        (SELECT COUNT(*) FROM verification_log),
+        2
+    ) AS systemic_breach_rate
+FROM verification_log
+WHERE turnaround_time_hours > 48;
+```
+
+### Result
+
+#### SLA Breach Analysis
+
+| SLA Breach Incidents | Systemic Breach Rate (%) |
+|---------------------:|-------------------------:|
+| 69 | 34.50 |
+
