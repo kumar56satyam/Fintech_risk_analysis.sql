@@ -742,3 +742,32 @@ LIMIT 5;
 | SOHEL MANSURI | 1 | 60 |
 | Monu Kumar | 1 | 59 |
 
+
+
+### Q21: Operational Efficiency – Fast-Track Approvals (< 24 Hours)
+
+### Business Purpose
+Measures the percentage of verification cases completed within 24 hours. This KPI serves as an indicator of operational efficiency, process automation effectiveness, and the organization's ability to deliver a frictionless customer experience.
+
+### SQL Query
+
+```sql
+SELECT
+    COUNT(*) AS quick_turnaround_cases,
+    ROUND(
+        COUNT(*) * 100.0 /
+        (SELECT COUNT(*) FROM verification_log),
+        2
+    ) AS fast_track_efficiency_pct
+FROM verification_log
+WHERE turnaround_time_hours < 24;
+```
+
+### Result
+
+#### Fast-Track Processing Performance
+
+| Quick Turnaround Cases | Fast-Track Efficiency (%) |
+|----------------------:|--------------------------:|
+| 49 | 24.50 |
+
