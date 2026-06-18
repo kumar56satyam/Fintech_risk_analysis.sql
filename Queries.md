@@ -825,3 +825,28 @@ WHERE risk_flag_reason = 'needs clarification'
 |----------------------------:|--------------------------------:|
 | 10 | 50.3 |
 
+
+
+## 💰 Section 4: Detailed Financial Recovery & Cash Analysis
+
+### Q24: Total Retained Principal Cash Realized Across Active Portfolio
+
+### Business Purpose
+Measures the total amount of cash successfully recovered from borrowers across the entire loan portfolio. This KPI provides a high-level view of liquidity generation, repayment performance, and capital recovery effectiveness.
+
+### SQL Query
+
+```sql
+SELECT
+    SUM(amount_paid) AS liquid_collected_cash_pool
+FROM loan_performance;
+```
+
+### Result
+
+#### Portfolio Cash Recovery Summary
+
+| Liquid Collected Cash Pool |
+|---------------------------:|
+| $2,117,072.94 |
+
