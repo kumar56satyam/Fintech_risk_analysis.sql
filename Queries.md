@@ -945,3 +945,73 @@ ORDER BY missed_payments ASC;
 | 13 | 5 | 2,200.00 |
 | 14 | 5 | 3,300.00 |
 
+### Q28: Top 5 Highest Capital Recovery Accounts
+
+### Business Purpose
+Identifies the largest individual cash recoveries within the portfolio. This analysis highlights successful repayment outcomes, supports recovery-performance tracking, and showcases the accounts contributing most significantly to portfolio liquidity.
+
+### SQL Query
+
+```sql
+SELECT
+    application_id,
+    loan_id,
+    amount_paid
+FROM loan_performance
+ORDER BY amount_paid DESC
+LIMIT 5;
+```
+
+### Result
+
+#### Top 5 Capital Recovery Accounts
+
+| Rank | Application ID | Loan ID | Amount Paid ($) |
+|------|---------------:|---------:|----------------:|
+| 1 | 217 | 817 | 34,000.00 |
+| 2 | 212 | 812 | 25,000.00 |
+| 3 | 271 | 871 | 24,000.00 |
+| 4 | 201 | 801 | 24,000.00 |
+| 5 | 221 | 821 | 23,400.00 |
+
+### Q29: Capital Efficiency Index (Repayment-to-Loan Ratio Window Analysis)
+
+### Business Purpose
+Uses SQL window functions to compare individual loan repayment performance against the portfolio-wide repayment benchmark. This analysis helps identify high-performing accounts, underperforming assets, and repayment efficiency trends across the lending portfolio.
+
+### SQL Query
+
+```sql
+SELECT
+    p.loan_id,
+    a.customer_name,
+    a.applied_amount,
+    p.amount_paid,
+    ROUND(
+        p.amount_paid * 100.0 / a.applied_amount,
+        1
+    ) AS account_repayment_yield_pct,
+    ROUND(
+        AVG(
+            p.amount_paid * 100.0 / a.applied_amount
+        ) OVER(),
+        2
+    ) AS system_average_yield
+FROM loan_performance p
+JOIN applications a
+    ON p.application_id = a.application_id
+LIMIT 5;
+```
+
+### Result
+
+#### Sample Account-Level Capital Efficiency Analysis
+
+| Loan ID | Customer Name | Applied Amount ($) | Amount Paid ($) | Repayment Yield (%) | System Average Yield (%) |
+|---------|---------------|-------------------:|----------------:|--------------------:|-------------------------:|
+| 701 | Ali Husen Ansari | 7,081.00 | 7,081.00 | 100.0 | 62.19 |
+| 702 | prasoon e | 12,349.50 | 12,349.50 | 100.0 | 62.19 |
+| 703 | N Goutham | 18,230.00 | 18,230.00 | 100.0 | 62.19 |
+| 704 | Rahul Maurya | 3,450.00 | 3,450.00 | 100.0 | 62.19 |
+| 705 | Mohti Mohti | 9,058.00 | 9,058.00 | 100.0 | 62.19 |
+
