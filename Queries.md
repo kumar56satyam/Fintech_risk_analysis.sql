@@ -800,3 +800,28 @@ WHERE turnaround_time_hours > 48;
 |---------------------:|-------------------------:|
 | 69 | 34.50 |
 
+
+### Q23: Critical Bottleneck Concentration – Long-TAT Cases in "Needs Clarification"
+
+### Business Purpose
+Identifies the most operationally expensive clarification cases by isolating applications that required extended review times. This analysis helps uncover workflow bottlenecks and supports automation initiatives aimed at reducing manual intervention.
+
+### SQL Query
+
+```sql
+SELECT
+    COUNT(*) AS stalled_clarification_cases,
+    ROUND(AVG(turnaround_time_hours), 1) AS stalled_avg_tat
+FROM verification_log
+WHERE risk_flag_reason = 'needs clarification'
+  AND turnaround_time_hours >= 40;
+```
+
+### Result
+
+#### High-Friction Clarification Queue Analysis
+
+| Stalled Clarification Cases | Average Turnaround Time (Hours) |
+|----------------------------:|--------------------------------:|
+| 10 | 50.3 |
+
