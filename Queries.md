@@ -880,3 +880,68 @@ WHERE p.loan_status = 'defaulted';
 | Recovery Salvage Pool | 107,650.00 |
 | Net Write-Off Loss | 1,238,607.06 |
 
+
+
+### Q26: Structural Cash Generation Capacity (Salaried vs. Self-Employed)
+
+### Business Purpose
+Evaluates the cash-generation contribution of different borrower segments by comparing total collections and average repayment performance. This analysis helps determine which customer profiles produce the most sustainable cash inflows and long-term portfolio value.
+
+### SQL Query
+
+```sql
+SELECT
+    a.employment_type,
+    SUM(p.amount_paid) AS aggregate_cash_inflow,
+    ROUND(AVG(p.amount_paid), 2) AS unit_cash_generation_average
+FROM applications a
+JOIN loan_performance p
+    ON a.application_id = p.application_id
+GROUP BY a.employment_type;
+```
+
+### Result
+
+#### Cash Generation by Employment Segment
+
+| Employment Type | Aggregate Cash Inflow ($) | Average Cash Generation per Account ($) |
+|----------------|--------------------------:|-----------------------------------------:|
+| Salaried | 1,284,523.59 | 11,267.75 |
+| Self Employed | 832,549.35 | 9,680.81 |
+
+### Q27: Arrears Density – Missed Payments Frequency Across Portfolio
+
+### Business Purpose
+Analyzes borrower delinquency depth by measuring the distribution of missed payments across the portfolio. This analysis helps collections teams prioritize recovery efforts, design intervention strategies, and understand how repayment performance deteriorates over time.
+
+### SQL Query
+
+```sql
+SELECT
+    missed_payments,
+    COUNT(*) AS total_impacted_accounts,
+    SUM(amount_paid) AS total_cash_collected_in_tier
+FROM loan_performance
+GROUP BY missed_payments
+ORDER BY missed_payments ASC;
+```
+
+### Result
+
+#### Portfolio Delinquency Distribution
+
+| Missed Payments | Total Impacted Accounts | Total Cash Collected ($) |
+|---------------:|------------------------:|-------------------------:|
+| 0 | 109 | 1,970,222.94 |
+| 1 | 6 | 22,000.00 |
+| 2 | 17 | 15,150.00 |
+| 6 | 8 | 25,000.00 |
+| 7 | 11 | 20,500.00 |
+| 8 | 13 | 17,950.00 |
+| 9 | 17 | 18,150.00 |
+| 10 | 9 | 11,000.00 |
+| 11 | 6 | 4,700.00 |
+| 12 | 7 | 4,900.00 |
+| 13 | 5 | 2,200.00 |
+| 14 | 5 | 3,300.00 |
+
