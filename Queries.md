@@ -1094,6 +1094,29 @@ WHERE v.verification_status = 'flagged'
 | Security Integrity Violations | 0 |
 
 
+### Q33: Logical Outlier Audit – Positive Missed Payments on Fully Paid-Off Loans
+
+### Business Purpose
+Performs a data quality validation to identify accounting inconsistencies within closed loan records. The objective is to detect loans marked as fully paid while simultaneously showing outstanding missed-payment activity.
+
+### SQL Query
+
+```sql
+SELECT
+    COUNT(*) AS impossible_billing_anomalies
+FROM loan_performance
+WHERE loan_status = 'paid off'
+  AND missed_payments > 0;
+```
+
+### Result
+
+#### Accounting Consistency Audit
+
+| Metric | Value |
+|----------|------:|
+| Impossible Billing Anomalies | 0 |
+
 
 
 
