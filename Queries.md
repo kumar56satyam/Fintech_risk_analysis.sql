@@ -1042,3 +1042,80 @@ WHERE a.credit_score >= 760
 | Prime Default Accounts | 36 |
 | Prime Capital Lost ($) | 584,900.00 |
 
+## 🔍 Section 5: Data Quality & System Integrity Diagnostics
+
+### Q31: Critical Ledger Reconciliation – Orphans & Broken Links
+
+### Business Purpose
+Validates data integrity between the application onboarding system and the loan servicing platform. The objective is to identify orphaned records that entered the application pipeline but failed to reach downstream loan management systems.
+
+### SQL Query
+
+```sql
+SELECT
+    COUNT(a.application_id) AS unmatched_pipeline_applications
+FROM applications a
+LEFT JOIN loan_performance p
+    ON a.application_id = p.application_id
+WHERE p.application_id IS NULL;
+```
+
+### Result
+
+#### Data Reconciliation Audit
+
+| Metric | Value |
+|----------|------:|
+| Unmatched Pipeline Applications | 0 |
+
+
+### Q32: Risk Label Mismatch Check (Approved Rejections Integrity Audit)
+
+### Business Purpose
+Performs a compliance and governance audit to ensure that applications flagged during verification were not incorrectly allowed to progress into successfully completed loan outcomes. This control helps validate policy enforcement and prevents unauthorized risk exposure.
+
+### SQL Query
+
+```sql
+SELECT
+    COUNT(*) AS security_integrity_violations
+FROM verification_log v
+JOIN loan_performance p
+    ON v.application_id = p.application_id
+WHERE v.verification_status = 'flagged'
+  AND p.loan_status = 'paid off';
+```
+
+### Result
+
+#### Compliance Integrity Audit
+
+| Metric | Value |
+|----------|------:|
+| Security Integrity Violations | 0 |
+
+
+
+### Q33: Logical Outlier Audit – Positive Missed Payments on Fully Paid-Off Loans
+
+### Business Purpose
+Performs a data quality validation to identify accounting inconsistencies within closed loan records. The objective is to detect loans marked as fully paid while simultaneously showing outstanding missed-payment activity.
+
+### SQL Query
+
+```sql
+SELECT
+    COUNT(*) AS impossible_billing_anomalies
+FROM loan_performance
+WHERE loan_status = 'paid off'
+  AND missed_payments > 0;
+```
+
+### Result
+
+#### Accounting Consistency Audit
+
+| Metric | Value |
+|----------|------:|
+| Impossible Billing Anomalies | 0 |
+
