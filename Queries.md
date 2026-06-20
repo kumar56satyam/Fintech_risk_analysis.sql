@@ -1118,5 +1118,27 @@ WHERE loan_status = 'paid off'
 | Impossible Billing Anomalies | 0 |
 
 
+### Q34: Financial Discrepancy Check – Overpayment Tracking
 
+### Business Purpose
+Validates transaction integrity by identifying repayment records that exceed the original loan amount. This audit helps detect payment-processing errors, duplicate transactions, accounting misstatements, or system calculation glitches.
+
+### SQL Query
+
+```sql
+SELECT
+    COUNT(*) AS critical_overpayment_glitches
+FROM loan_performance p
+JOIN applications a
+    ON p.application_id = a.application_id
+WHERE p.amount_paid > a.applied_amount;
+```
+
+### Result
+
+#### Transaction Integrity Audit
+
+| Metric | Value |
+|----------|------:|
+| Critical Overpayment Glitches | 0 |
 
