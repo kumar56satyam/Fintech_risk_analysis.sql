@@ -1068,4 +1068,32 @@ WHERE p.application_id IS NULL;
 |----------|------:|
 | Unmatched Pipeline Applications | 0 |
 
+### Q32: Risk Label Mismatch Check (Approved Rejections Integrity Audit)
+
+### Business Purpose
+Performs a compliance and governance audit to ensure that applications flagged during verification were not incorrectly allowed to progress into successfully completed loan outcomes. This control helps validate policy enforcement and prevents unauthorized risk exposure.
+
+### SQL Query
+
+```sql
+SELECT
+    COUNT(*) AS security_integrity_violations
+FROM verification_log v
+JOIN loan_performance p
+    ON v.application_id = p.application_id
+WHERE v.verification_status = 'flagged'
+  AND p.loan_status = 'paid off';
+```
+
+### Result
+
+#### Compliance Integrity Audit
+
+| Metric | Value |
+|----------|------:|
+| Security Integrity Violations | 0 |
+
+
+
+
 
