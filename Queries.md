@@ -431,30 +431,8 @@ ORDER BY applied_amount DESC;
 |----------|
 | No rows returned |
 
-### Key Insights
 
-- No loan applications exceeded **twice the portfolio's average ticket size**.
-- The portfolio currently shows **no evidence of concentration-risk outliers**.
-- Individual borrower exposure remains distributed within established underwriting limits.
-- The absence of extreme loan sizes reduces vulnerability to single-customer default events.
 
-### Business Interpretation
-
-A concentration-risk review found **zero applications** breaching the portfolio's high-exposure threshold. This indicates that underwriting controls are effectively preventing excessive capital allocation to individual borrowers.
-
-From a risk management perspective, the portfolio demonstrates strong diversification characteristics and avoids dependency on a small number of large exposures.
-
-### Risk Management Benefits
-
-- Reduces the impact of any single borrower default.
-- Improves portfolio diversification.
-- Limits concentration-risk driven capital impairment.
-- Supports regulatory and internal exposure-limit compliance.
-- Enhances portfolio stability during economic stress events.
-
-### Executive Summary
-
-The portfolio remains free from high-ticket exposure anomalies, with **no applications exceeding twice the average loan amount**. This result confirms that current underwriting policies are successfully controlling borrower concentration risk and maintaining a balanced distribution of credit exposure.
 
 
 
