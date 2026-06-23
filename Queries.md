@@ -641,12 +641,7 @@ ORDER BY 1;
 | 4 | 50 | 17,742.00 |
 | 5 | 100 | 16,942.36 |
 
-### Key Insights
 
-- **May (Month 5)** recorded the highest origination activity with **100 applications**, representing the portfolio's peak operational workload.
-- **February (Month 2)** generated the lowest application volume with **14 originations**.
-- Average loan sizes remained relatively stable across all months, ranging from approximately **$15K to $18K**.
-- While application volume fluctuated significantly, borrower demand characteristics remained consistent.
 
 ### Business Interpretation
 
