@@ -645,13 +645,6 @@ ORDER BY 1;
 
 
 
-### Operational Recommendations
-
-- Increase staffing capacity during historically high-volume months.
-- Monitor monthly origination trends to improve workforce planning.
-- Establish surge-capacity procedures for periods of rapid application growth.
-- Track monthly approval and turnaround-time metrics alongside volume trends.
-- Analyze marketing campaigns and acquisition channels contributing to volume spikes.
 
 ### Executive Summary
 
