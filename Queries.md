@@ -578,30 +578,6 @@ GROUP BY verification_status;
 | Approved | 35.81 |
 | Flagged | 35.01 |
 
-### Key Insights
-
-- **Approved applications** required an average of **35.81 hours** to complete verification.
-- **Flagged applications** averaged **35.01 hours**, slightly faster than approved cases.
-- The processing time difference between the two outcomes is minimal (**0.80 hours**).
-- Verification workload appears to be distributed consistently regardless of final review outcome.
-
-### Business Interpretation
-
-Contrary to common expectations, flagged applications do not require substantially longer review times than approved applications. This suggests that the verification process follows a relatively standardized workflow and that risk identification occurs efficiently within existing operational procedures.
-
-The near-identical turnaround times indicate that operational delays are likely driven by overall process complexity rather than the final verification decision itself.
-
-### Operational Recommendations
-
-- Monitor turnaround times by verification outcome on a recurring basis.
-- Investigate individual cases with exceptionally high TAT values to identify hidden bottlenecks.
-- Consider adding workflow-stage tracking to determine where processing delays occur.
-- Measure agent-level performance alongside outcome-based TAT metrics for deeper operational insights.
-- Establish SLA thresholds for verification completion and automate escalation alerts for overdue cases.
-
-### Executive Summary
-
-Verification processing times remain highly consistent across outcome categories, with **Approved applications averaging 35.81 hours** and **Flagged applications averaging 35.01 hours**. The small difference suggests that verification outcomes are not a major driver of operational friction, indicating a stable and standardized review process across the portfolio.
 
 
 
