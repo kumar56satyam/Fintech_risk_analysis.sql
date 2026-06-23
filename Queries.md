@@ -643,11 +643,7 @@ ORDER BY 1;
 
 
 
-### Business Interpretation
 
-The portfolio exhibits substantial variation in application volume across months, suggesting the presence of seasonal demand patterns or marketing-driven origination spikes. However, the stability of average ticket sizes indicates that borrower profiles and lending behavior remained relatively consistent throughout the observed period.
-
-The sharp increase in May originations would likely require additional underwriting and verification capacity to maintain service-level agreements and prevent operational bottlenecks.
 
 ### Operational Recommendations
 
