@@ -642,14 +642,6 @@ ORDER BY 1;
 | 5 | 100 | 16,942.36 |
 
 
-
-
-
-
-### Executive Summary
-
-Origination activity demonstrates meaningful month-to-month volatility, with application volume increasing from **14 applications in February** to **100 applications in May**. Despite these fluctuations, average loan sizes remained stable, indicating that operational scaling requirements are primarily driven by volume growth rather than changes in borrower exposure levels.
-
 ### Q20: Efficiency Scorecard – Top 5 Highest Operational Backlog Agents
 
 ### Business Purpose
