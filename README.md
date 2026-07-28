@@ -96,4 +96,25 @@ The analysis scripts calculate standard institutional lending metrics, including
 * **Power BI Dashboard Integration:** Transforming the analytical SQL outputs into dynamic interactive risk-matrix visuals.
 * **Advanced Cohort Segmentation:** Analyzing month-on-month vintage default rates to measure historical credit deterioration curves.
 * **Predictive Risk Modeling:** Moving from retroactive SQL reporting to predictive machine learning algorithms for automated credit limit adjustments.
+
+
+# 🤝 Contributing
+
+Contributions, suggestions, and improvements are welcome.
+
+Feel free to fork this repository and submit a pull request.
+
+---
+
+# 👨‍💻 Author
+
+**Kumar Satyam**
+
+- GitHub: https://github.com/kumar56satyam
+- LinkedIn: https://www.linkedin.com/in/kumar33satyam/
+
+---
+
+⭐ If you found this project useful, consider giving it a star!
+
    
