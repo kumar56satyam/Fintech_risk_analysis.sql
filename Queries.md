@@ -946,5 +946,3 @@ LIMIT 5;
 | 705 | Mohti Mohti | 9,058.00 | 9,058.00 | 100.0 | 62.19 |
 
 
-| Critical Overpayment Glitches | 0 |
-
